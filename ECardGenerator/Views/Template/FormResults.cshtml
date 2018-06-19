@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using ECardGenerator.Models
+
+@model EcardViewModel
+
+<div style="background-image: url('../../Content/Images/@Model.ImageName');">
+    <div>
+        <h1 style="color:@Model.FontColor">Hello @Model.ToName!</h1>
+    </div>
+    <div>
+        <h2 class="message" style="color:@Model.FontColor;">@Model.Message</h2>
+    </div>
+    <div>
+        <br /><br />
+        <h3 style="color:@Model.FontColor;">Kindly, @Model.FroName</h3>
+    </div>
+    <br />
+    <br />
+</div>
+<div>
+    <p>This ECard will be sent to: @Model.ToEmail </p>
+</div>
+<div>
+    <p>This ECard sent from: @Model.FroName </p>
+</div>

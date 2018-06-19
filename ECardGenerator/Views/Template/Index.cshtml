@@ -1,0 +1,34 @@
+﻿@{
+    /**/
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using ECardGenerator.Models
+@model IList<Template>
+
+<h1>E Card Generator</h1>
+<h3>Click on the colors to create an ECard!</h3>
+<div class="container">
+
+    @foreach (Template template in Model)
+    {
+        <div class="row">
+            <div class="card">
+                <div class="template" id="image">
+                    <a href="@Url.Action("Form", "Template")">
+                        <img src="~/Content/Images/@template.ImageName" class="template" />
+                    </a>
+                </div>
+                <div>
+                    <div>
+                        <h4 class="message" style="color:@template.FontColor;">Your Message Here</h4><br />
+                        <br />
+
+                        <p class="message" style="color:@template.FontColor;">@template.TemplateName</p> <br />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
