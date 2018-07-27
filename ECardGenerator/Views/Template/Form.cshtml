@@ -3,35 +3,46 @@
 }
 @using ECardGenerator.Models
 
-@model EcardViewModel
-
+@model Ecard
 
 <h1>Please fill out the form</h1>
-
-<form method="POST" action="@Url.Action("FormResults", "Template")">
+<form id="eCardForm" method="POST" action="@Url.Action("FormResults", "Template")">
     <section>
         <div>
             Please select a card color:
-            <select name="ImageName">
-                <option value="blue.jpg">Blue Card</option>
-                <option value="green.jpg">Green Card</option>
-                <option value="light-grey.jpg">Grey Card</option>
-                <option value="slamon.jpg">Salmon Card</option>
-            </select>
+            @Html.TextBoxFor(m=> m.TemplateID, new { id = "TemplateID" })
+
+            <select name="TemplateID">
+            <option value="1">Blue Card</option>
+            <option value="2">Green Card</option>
+            <option value="3">Grey Card</option>
+            <option value="4">Salmon Card</option>
+        </select>
         </div>
         <div>
-            To Name: <input type="text" name="ToName" /><br />
-            To Email: <input type="text" name="ToEmail" /> <br />
-            From Name: <input type="text" name="FroName" /> <br />
-            From Email: <input type="text" name="FroEmail" /> <br />
-            Message: <input type="text" name="Message" /> <br />
+            <div>
+                To Name:
+                @Html.TextBoxFor(m => m.ToName, new { id = "ToName" })
 
-            <input type="submit" name="submitButton" value="submitted" />
-
+            </div>
+            <div>
+                To Email:
+                @Html.TextBoxFor(m => m.ToEmail, new { id = "ToEmail" })              
+            </div>
+            <div>
+                From Name:
+                @Html.TextBoxFor(m => m.FroName, new { id = "FroName" })
+            </div>
+            <div>
+                From Email:
+                @Html.TextBoxFor(m => m.FroEmail, new { id = "FroEmail"})
+            </div>
+            <div>
+                Message:
+                @Html.TextBoxFor(m => m.Message, new { id = "Message"})
+            </div>
+            <input type="submit" name="submitButton" value="submit" />
         </div>
 
-
     </section>
-
 </form>
-

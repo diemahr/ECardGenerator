@@ -169,6 +169,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cardtemplates.css" />
+    <Content Include="Content\cardtemplates.min.css" />
     <Content Include="Content\Images\blue.jpg" />
     <Content Include="Content\Images\green.jpg" />
     <Content Include="Content\Images\light-grey.jpg" />
@@ -184,6 +186,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\FormValidation.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -194,7 +197,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -211,6 +216,7 @@
     <Content Include="Views\Template\Index.cshtml" />
     <Content Include="Views\Template\Form.cshtml" />
     <Content Include="Views\Template\FormResults.cshtml" />
+    <Content Include="Views\Template\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

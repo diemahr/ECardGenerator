@@ -5,12 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.SqlClient;
 
 namespace ECardGenerator.Controllers
 {
     public class TemplateController : Controller
     {
         private ITemplateDAL _dal;
+        public Ecard _eCard;
+        //public EcardViewModel _eCardVM;
+
         public TemplateController(ITemplateDAL dal)
         {
             _dal = dal;
@@ -29,11 +33,34 @@ namespace ECardGenerator.Controllers
         }
 
         [HttpPost]
-        public ActionResult FormResults(Ecard ecard)
+        public ActionResult FormResults(string toName, string froName, string toEmail, string froEmail,
+                                    string message, int templateID)
         {
-            EcardViewModel vm = new EcardViewModel(ecard);
+            try
+            {
+                _eCard = _dal.CreateUserECard(toName, froName, toEmail, froEmail, message, templateID);           
+            }
+            catch (SqlException)
+            {
+                return RedirectToAction("Index", "Template");
+            }
+            return RedirectToAction("Details", "Template", _eCard);
 
-            return View(vm);
         }
+
+        public ActionResult Details(Ecard _eCard)
+        {
+            EcardViewModel _eCardVM = new EcardViewModel(_eCard);
+            try
+            {                
+                _eCardVM = _dal.RetrieveECardVM(_eCard);                
+            }
+            catch (SqlException)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(_eCardVM);
+        }
+
     }
 }
